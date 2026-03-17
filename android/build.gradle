@@ -18,4 +18,23 @@ buildscript {
     }
 }
 
+// Add allprojects section for repositories
+allprojects {
+    repositories {
+        // React Native repositories
+        google()
+        mavenCentral()
+        // Required for react-native-background-fetch
+        maven {
+            url "${project.rootDir}/../node_modules/react-native-background-fetch/android/libs"
+        }
+        maven { url "https://www.jitpack.io" }
+
+    }
+
+    
+    // Simple property to indicate which store to use for react-native-iap
+    ext.iapStore = "play"
+}
+
 apply plugin: "com.facebook.react.rootproject"

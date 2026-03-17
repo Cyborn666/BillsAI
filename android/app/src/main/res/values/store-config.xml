@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Configure which store to use for in-app purchases -->
+    <string name="store_flavor">play</string>
+</resources>

@@ -23,6 +23,7 @@ target 'BillsAI' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
+
   post_install do |installer|
     # https://github.com/facebook/react-native/blob/main/packages/react-native/scripts/react_native_pods.rb#L197-L202
     react_native_post_install(
@@ -31,5 +32,23 @@ target 'BillsAI' do
       :mac_catalyst_enabled => false,
       # :ccache_enabled => true
     )
+    
+    # Handle arm64/x86_64 architecture issues
+    installer.pods_project.targets.each do |target|
+      target.build_configurations.each do |config|
+        # For Apple Silicon simulators, add x86_64 architecture
+        config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = ""
+        
+        # Make sure pods also build for arm64
+        config.build_settings['VALID_ARCHS'] = "arm64 arm64e x86_64"
+        
+        # Explicitly set ARCHS to handle MLKit and other problematic dependencies
+        if config.name == 'Debug'
+          config.build_settings['ONLY_ACTIVE_ARCH'] = 'YES'
+        else
+          config.build_settings['ONLY_ACTIVE_ARCH'] = 'NO'
+        end
+      end
+    end
   end
 end

@@ -85,6 +85,14 @@ android {
         versionCode 1
         versionName "1.0"
     }
+    
+    // Define store flavor dimension to match react-native-iap
+    flavorDimensions += "store"
+    productFlavors {
+        play {
+            dimension = "store"
+        }
+    }
     signingConfigs {
         debug {
             storeFile file('debug.keystore')
@@ -116,4 +124,15 @@ dependencies {
     } else {
         implementation jscFlavor
     }
+    
+    // Add vector icons dependency
+    implementation project(':react-native-vector-icons')
+    
+    // Implementation for react-native-iap will be automatically matched
+    // with our product flavor
+    
+    // Direct implementation for PDF library to fix dependency issues
+    // Using a known available version tag
+    implementation 'com.tom-roush:pdfbox-android:2.0.24.0'
+ 
 }

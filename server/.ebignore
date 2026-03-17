@@ -1,0 +1,36 @@
+# Node modules
+node_modules/
+
+# Environment files - Elastic Beanstalk has its own env variable system
+.env
+.env.example
+# Don't ignore .env.production as we'll use it in start-production.js
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Test files
+__tests__/
+coverage/
+
+# Editor directories and files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Other unnecessary files
+.git/
+.github/
+README.md
