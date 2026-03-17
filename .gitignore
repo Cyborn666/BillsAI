@@ -88,4 +88,5 @@ yarn-error.log
 /server/.env.*.local
 
 /server/.env.example
-/server/.env.production
+/server/.env.productionandroid/app/google-services.json
+ios/GoogleService-Info.plist
